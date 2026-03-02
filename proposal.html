@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Mandira ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Cormorant Garamond',serif;
+background:#111;
+color:#f5f5f5;
+overflow-x:hidden;
+}
+
+/* Entry Screen */
+
+#entryScreen{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#000;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:9999;
+cursor:pointer;
+transition:opacity 1s ease;
+text-align:center;
+padding:20px;
+}
+
+#entryScreen h1{
+font-size:2.5em;
+color:#e6c07b;
+margin-bottom:20px;
+}
+
+#entryScreen p{
+font-size:1.4em;
+color:#ddd;
+max-width:600px;
+line-height:1.6;
+}
+
+/* Sections */
+
+.section{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:60px 20px;
+}
+
+.section img{
+width:90%;
+max-width:900px;
+height:70vh;
+object-fit:cover;
+border-radius:10px;
+margin-bottom:40px;
+}
+
+h1{
+font-size:3em;
+color:#e6c07b;
+margin-bottom:25px;
+font-weight:600;
+}
+
+p{
+font-size:1.4em;
+max-width:800px;
+line-height:1.8;
+}
+
+/* Buttons */
+
+.buttons{
+margin-top:40px;
+position:relative;
+height:120px;
+}
+
+button{
+padding:14px 45px;
+font-size:18px;
+border:none;
+border-radius:40px;
+cursor:pointer;
+margin:10px;
+font-family:'Cormorant Garamond',serif;
+}
+
+#yesBtn{
+background:#ffffff;
+color:#000000;
+}
+
+#noBtn{
+background:#8b0000;
+color:white;
+position:absolute;
+}
+
+/* Celebration Page */
+
+#celebrationPage{
+display:none;
+min-height:100vh;
+background:#000;
+color:white;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+position:relative;
+overflow:hidden;
+}
+
+/* Falling Hearts */
+
+.falling{
+position:fixed;
+top:-50px;
+font-size:30px;
+animation:fall linear forwards;
+pointer-events:none;
+}
+
+@keyframes fall{
+0%{transform:translateY(0);opacity:1;}
+100%{transform:translateY(110vh);opacity:0;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="entryScreen">
+<h1>For Mandira ❤️</h1>
+<p>
+A little piece of my heart awaits you.<br>
+Click gently to begin.
+</p>
+</div>
+
+<audio id="bgMusic" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div id="mainContent">
+
+<div class="section">
+<h1>Mandira ❤️</h1>
+<p>Every beautiful story begins quietly. Ours did too.</p>
+</div>
+
+<div class="section">
+<img src="WhatsApp Image 2026-03-01 at 11.45.21 AM.jpeg">
+<h1>The day our words first found each other</h1>
+<p>
+What started as a simple conversation
+slowly became something meaningful.
+There was comfort in your voice,
+and something unforgettable in your presence.
+</p>
+</div>
+
+<div class="section">
+<img src="WhatsApp Image 2026-03-01 at 11.45.22 AM.jpeg">
+<h1>Your Smile</h1>
+<p>
+Your smile feels like sunlight through a window.
+Soft. Warm. Impossible to ignore.
+</p>
+</div>
+
+<div class="section">
+<img src="WhatsApp Image 2026-03-01 at 11.45.23 AM.jpeg">
+<h1>You Are Rare</h1>
+<p>
+Not just beautiful,
+but genuine.
+And that is what makes you unforgettable.
+</p>
+</div>
+
+<div class="section">
+<img src="WhatsApp Image 2026-03-01 at 11.45.24 AM.jpeg">
+<h1>Mandira, I Love You ❤️</h1>
+<p>Will you be mine?</p>
+
+<div class="buttons">
+<button id="yesBtn">Yes ❤️</button>
+<button id="noBtn">No</button>
+</div>
+
+</div>
+
+</div>
+
+<div id="celebrationPage" class="section">
+<h1>She Said YES ❤️</h1>
+<p>This is where our real story begins.</p>
+</div>
+
+<script>
+
+/* Entry music */
+
+const entry=document.getElementById("entryScreen");
+const music=document.getElementById("bgMusic");
+
+entry.addEventListener("click",()=>{
+music.play();
+entry.style.opacity="0";
+setTimeout(()=>entry.style.display="none",1000);
+});
+
+/* No button escape */
+
+const noBtn=document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover",()=>{
+let x=Math.random()*(window.innerWidth-150);
+let y=Math.random()*(window.innerHeight-150);
+noBtn.style.left=x+"px";
+noBtn.style.top=y+"px";
+});
+
+/* YES Button */
+
+document.getElementById("yesBtn").addEventListener("click",()=>{
+
+document.getElementById("mainContent").style.display="none";
+const celebration=document.getElementById("celebrationPage");
+celebration.style.display="flex";
+
+const emojis=["❤️","💖","💘","💕","💞","💓","💗","🎉","✨","🥰","😍"];
+
+let interval=setInterval(()=>{
+
+for(let i=0;i<6;i++){
+let heart=document.createElement("div");
+heart.className="falling";
+heart.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(20+Math.random()*40)+"px";
+heart.style.animationDuration=(3+Math.random()*3)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),6000);
+}
+
+},300);
+
+setTimeout(()=>{
+clearInterval(interval);
+},6000);
+
+});
+
+</script>
+
+</body>
+</html>
